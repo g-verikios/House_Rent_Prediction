@@ -3,7 +3,8 @@ Predicting rent prices for a house dataset.
 
 
 ## House Rent Dataset
-This dataset revovles around rent prices for houses in India. Since the housing market is at an all time high worldwide I had an interest in exploring such a dataset and work on regression. The description in kaggle is as follows:
+This dataset revovles around rent prices for houses in India. Since the housing market is at an all time high worldwide I had an interest in exploring such a dataset and work on regression. 
+The description in kaggle is as follows:
 'The spectrum of housing options in India is incredibly diverse, spanning from the opulent palaces once inhabited by maharajas of yore, to the contemporary high-rise apartment complexes in bustling metropolitan areas, and even to the humble abodes in remote villages, consisting of modest huts. This wide-ranging tapestry of residential choices reflects the significant expansion witnessed in India's housing sector, which has paralleled the upward trajectory of income levels in the country. According to the findings of the Human Rights Measurement Initiative, India currently achieves 60.9% of what is theoretically attainable, considering its current income levels, in ensuring the fundamental right to housing for its citizens. In the realm of housing arrangements, renting, known interchangeably as hiring or letting, constitutes an agreement wherein compensation is provided for the temporary utilization of a resource, service, or property owned by another party. Within this arrangement, a gross lease is one where the tenant is obligated to pay a fixed rental amount, and the landlord assumes responsibility for covering all ongoing property-related expenses. The concept of renting also aligns with the principles of the sharing economy, as it fosters the utilization of assets and resources among individuals or entities, promoting efficiency and access to housing solutions for a broad spectrum of individuals.'
 
 The specifics of the features in this dataset can be found on the link in the references. The features as they appear in the `Dataset Glossary.txt` are:
@@ -71,7 +72,8 @@ This is what it should like:
 Note: To stop serving use Crtl+C
 
 ## Things that could be done better and other remarks
-- The part of handling the features, for e.g. which ones to drop which ones to keep could be set up perhaps in a better way so that it's customizable in a simpler way. Now the column names are hardcoded and this is probably not the cleanest option if a later EDA on newer datasets brings other insights in terms of feature importance etc.
-- Generally wanted to do something more exotic other than the boilerplate used in the course for the scripts deploying the model, but in this case time was really limited, perhaps something to change in the future.
+- Categorical features were treated using the label encoder. This made things less complex in terms of preparing the dataset. It could be of interest to make a follow-up where different techniques are combined like label encoder for the features with high cardinality and one-hot-encoding for the rest and see how the scores might change.
+- Due to computing power limitation and time restrictions GridSearch's were a bit limited in terms of the grid space, if there's a follow-up it can be on a wider grid space. For example I could have used the CUDA toolkit and utilize the cpu for xgboost, which could have made things a lot faster at least for that particular model.
+- Generally wanted to do something more exotic other than the boilerplate used in the course for the scripts deploying the model, work, life and COVID didn't allow for more.
 - Serving the app on a webserver instead of local deployment
 - For serving the app on windows instead of ubuntu you could use waitress to serve the flask application, a few modifications might be needed in the Dockerfile and the pipfiles
