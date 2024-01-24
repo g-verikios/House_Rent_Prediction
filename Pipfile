@@ -15,10 +15,10 @@ requests = "*"
 gunicorn = "*"
 ipykernel = "*"
 plotly = "*"
-skfeature = {git = "https://github.com/jundongl/scikit-feature.git"}
 xgboost = "*"
 
 [dev-packages]
+skfeature = {git = "https://github.com/jundongl/scikit-feature.git"}
 
 [requires]
 python_version = "3.10"

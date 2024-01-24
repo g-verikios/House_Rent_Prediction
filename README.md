@@ -48,7 +48,7 @@ For the bare minimums to run this code you will need:
 - predict_test.py: script that tests the prediction app making a request to the prediction service. There are two example dictionaries that could be used (commenting one and uncommenting the other) to make the test requests.
 
 ## Exploratory Data Analysis
-Insigths were found through an EDA on the dataset, in the notebook. Here I am be using the dataset to predict the target variable rent using the following models for regression:
+Insigths were found through an EDA on the dataset, in the notebook. Here I am using the dataset to predict the target variable rent using the following models for regression:
 - Linear Regression
 - Ridge regression  (linear with regularization)
 - Decision Tree regressor
@@ -64,7 +64,7 @@ These models are compared to choose the one with the best performance based on r
 ### Running the service (local) and testing
 1. Build the docker image using `docker build -t rent-prediction .`
 2. Run the docker image and deploy the service locally using `docker run -it --rm -p 9696:9696 rent-prediction`
-3. In a terminal with the pipenv environment activated type and run: `python predict_test.py`, this runs a test and should return the response from the service similar to the screenshot below.
+3. Open a terminal in this directory and with the pipenv environment activated type and run: `python predict_test.py`, this runs a test and should return the response from the service similar to the screenshot below.
 
 This is what it should like:
 
@@ -74,6 +74,6 @@ Note: To stop serving use Crtl+C
 ## Things that could be done better and other remarks
 - Categorical features were treated using the label encoder. This made things less complex in terms of preparing the dataset. It could be of interest to make a follow-up where different techniques are combined like label encoder for the features with high cardinality and one-hot-encoding for the rest and see how the scores might change.
 - Due to computing power limitation and time restrictions GridSearch's were a bit limited in terms of the grid space, if there's a follow-up it can be on a wider grid space. For example I could have used the CUDA toolkit and utilize the cpu for xgboost, which could have made things a lot faster at least for that particular model.
-- Generally wanted to do something more exotic other than the boilerplate used in the course for the scripts deploying the model, work, life and COVID didn't allow for more.
+- The dataset was not clear in terms of the possible values that could be used on the features. Something to think about because if for example city (or if any other feature) as a feature could be set to some unrealistic value like "Atlantis" that gets converted through the label encoder without leading to any errors. Here I kinda assumed that in a way data is prefiltered for this kind of instances. I didnt however actively search for this, mby I could have looked into the values that had the smallest counts and see if there is anything weird there.
 - Serving the app on a webserver instead of local deployment
 - For serving the app on windows instead of ubuntu you could use waitress to serve the flask application, a few modifications might be needed in the Dockerfile and the pipfiles
