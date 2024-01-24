@@ -67,7 +67,7 @@ These models are compared to choose the one with the best performance based on r
 3. Open a terminal in this directory and with the pipenv environment activated type and run: `python predict_test.py`, this runs a test and should return the response from the service similar to the screenshot below.
 
 This is what it should like:
-
+![Alt text](image.png)
 
 Note: To stop serving use Crtl+C
 
